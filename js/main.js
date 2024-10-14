@@ -19,3 +19,17 @@ let over18Discount = 0.2;
 let over65Discount = 0.4;
 
 let finalPrice;
+
+// & ELABORAZIONE DATI
+// ^ CALCOLO IL PREZZO PER KM
+let pricePerKm = indexPricePerKm * userKm;
+console.log(pricePerKm);
+
+// ^ APPLICO LO SCONTO SE NECESSARIO
+if (userAge > 65) {
+	finalPrice = pricePerKm - pricePerKm * over65Discount;
+} else if (userAge > 18) {
+	finalPrice = pricePerKm - pricePerKm * over18Discount;
+} else {
+	finalPrice = pricePerKm;
+}
