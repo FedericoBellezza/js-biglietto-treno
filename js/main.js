@@ -18,9 +18,18 @@ let indexPricePerKm = 0.21;
 let over18Discount = 0.2;
 let over65Discount = 0.4;
 
+let isAgeValid;
 let finalPrice;
 
 // & ELABORAZIONE DATI
+// ^ CONTROLLO SE L'ETA' INSERITA E' VALIDA
+if (!isNaN(userAge) && userAge < 150 && userAge >= 0) {
+	isAgeValid = true;
+} else {
+	isAgeValid = false;
+	alert('Età inserita non valida, ricaricare la pagina');
+}
+
 // ^ CALCOLO IL PREZZO PER KM
 let pricePerKm = indexPricePerKm * userKm;
 
@@ -42,6 +51,7 @@ console.log(
     età utente: ${userAge}
     prezzo al km: ${indexPricePerKm}
     prezzo finale: ${finalPrice}
+    is age valid: ${isAgeValid}
     `
 );
 
