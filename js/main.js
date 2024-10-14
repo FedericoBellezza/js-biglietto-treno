@@ -8,20 +8,27 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio,
 - L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 */
 
-// & RACCOLTA DATI
-// ^ DATI DALL'UTENTE
-let userKm = parseInt(prompt('Quanti chilomentri dovrai percorrere?'));
-let userAge = parseInt(prompt('Inserisci la tua età'));
-
 // ^ DATI A DISPOSIZIONE
 let indexPricePerKm = 0.21;
 let over18Discount = 0.2;
 let over65Discount = 0.4;
 
 let isAgeValid;
+let isKmValid;
 let finalPrice;
 
-// & ELABORAZIONE DATI
+// & RACCOLTA DATI
+// ^ DATI DALL'UTENTE
+let userKm = parseInt(prompt('Quanti chilomentri dovrai percorrere?'));
+// ^ CONTROLLO SE I KM INSERITI SONO VALIDI
+if (!isNaN(userKm)) {
+	isKmValid = true;
+} else {
+	isKmValid = false;
+	alert('I km inseriti non sono validi, ricaricare la pagina');
+}
+
+let userAge = parseInt(prompt('Inserisci la tua età'));
 // ^ CONTROLLO SE L'ETA' INSERITA E' VALIDA
 if (!isNaN(userAge) && userAge < 150 && userAge >= 0) {
 	isAgeValid = true;
@@ -30,6 +37,7 @@ if (!isNaN(userAge) && userAge < 150 && userAge >= 0) {
 	alert('Età inserita non valida, ricaricare la pagina');
 }
 
+// & ELABORAZIONE DATI
 // ^ CALCOLO IL PREZZO PER KM
 let pricePerKm = indexPricePerKm * userKm;
 
