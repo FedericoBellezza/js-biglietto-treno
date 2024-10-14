@@ -23,7 +23,6 @@ let finalPrice;
 // & ELABORAZIONE DATI
 // ^ CALCOLO IL PREZZO PER KM
 let pricePerKm = indexPricePerKm * userKm;
-console.log(pricePerKm);
 
 // ^ APPLICO LO SCONTO SE NECESSARIO
 if (userAge > 65) {
@@ -33,3 +32,17 @@ if (userAge > 65) {
 } else {
 	finalPrice = pricePerKm;
 }
+
+// ^ STAMPO IL MESSAGGIO CON IL PREZZO FINALE
+finalPrice = finalPrice.toFixed(2);
+
+console.log(
+	`
+    km utente: ${userKm}
+    età utente: ${userAge}
+    prezzo al km: ${indexPricePerKm}
+    prezzo finale: ${finalPrice}
+    `
+);
+
+alert(`Il prezzo del biglietto è di €${finalPrice}`);
