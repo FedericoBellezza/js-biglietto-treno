@@ -13,15 +13,13 @@ let indexPricePerKm = 0.21;
 let over18Discount = 0.2;
 let over65Discount = 0.4;
 
-let isAgeValid;
-let isKmValid;
-let finalPrice;
+let isAgeValid, isKmValid, finalPrice;
 
 // & RACCOLTA DATI
 // ^ DATI DALL'UTENTE
 let userKm = parseInt(prompt('Quanti chilomentri dovrai percorrere?'));
 // ^ CONTROLLO SE I KM INSERITI SONO VALIDI
-if (!isNaN(userKm)) {
+if (!isNaN(userKm) && userKm > 0) {
 	isKmValid = true;
 } else {
 	isKmValid = false;
@@ -40,14 +38,14 @@ if (!isNaN(userAge) && userAge < 150 && userAge >= 0) {
 // & ELABORAZIONE DATI
 // ^ CALCOLO IL PREZZO PER KM
 let pricePerKm = indexPricePerKm * userKm;
+finalPrice = pricePerKm;
 
 // ^ APPLICO LO SCONTO SE NECESSARIO
 if (userAge > 65) {
-	finalPrice = pricePerKm - pricePerKm * over65Discount;
-} else if (userAge > 18) {
-	finalPrice = pricePerKm - pricePerKm * over18Discount;
-} else {
-	finalPrice = pricePerKm;
+	finalPrice -= pricePerKm * over65Discount;
+}
+if (userAge < 18) {
+	finalPrice -= pricePerKm * over18Discount;
 }
 
 // ^ STAMPO IL MESSAGGIO CON IL PREZZO FINALE
