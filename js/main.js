@@ -12,6 +12,7 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio,
 let indexPricePerKm = 0.21;
 let over18Discount = 0.2;
 let over65Discount = 0.4;
+let userAge;
 
 let isAgeValid, isKmValid, finalPrice;
 
@@ -26,7 +27,9 @@ if (!isNaN(userKm) && userKm > 0) {
 	alert('I km inseriti non sono validi, ricaricare la pagina');
 }
 
-let userAge = parseInt(prompt('Inserisci la tua età'));
+if (isKmValid) {
+	userAge = parseInt(prompt('Inserisci la tua età'));
+}
 // ^ CONTROLLO SE L'ETA' INSERITA E' VALIDA
 if (!isNaN(userAge) && userAge < 150 && userAge >= 0) {
 	isAgeValid = true;
@@ -41,10 +44,10 @@ let pricePerKm = indexPricePerKm * userKm;
 finalPrice = pricePerKm;
 
 // ^ APPLICO LO SCONTO SE NECESSARIO
-if (userAge > 65) {
+if (userAge > 65 && isAgeValid && isKmValid) {
 	finalPrice -= pricePerKm * over65Discount;
 }
-if (userAge < 18) {
+if (userAge < 18 && isAgeValid && isKmValid) {
 	finalPrice -= pricePerKm * over18Discount;
 }
 
